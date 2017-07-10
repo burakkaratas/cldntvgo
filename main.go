@@ -6,6 +6,8 @@ import (
 	"github.com/codegangsta/negroni"
 
 	"fmt"
+	"math/rand"
+	"time"
 )
 
 func main() {
@@ -23,6 +25,11 @@ func main() {
 	n.Run(hostString)
 }
 
-func hello(res http.ResponseWriter, req *http.Request)  {
+func hello(res http.ResponseWriter, req *http.Request) {
 	fmt.Fprintf(res, "Hello Tutku!")
+}
+
+func dieRoll(size int) int {
+	rand.Seed(time.Now().UnixNano())
+	return rand.Intn(size) + 1
 }
